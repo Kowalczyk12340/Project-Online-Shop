@@ -1,13 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/" class="d-flex justify-content-center mb-4">
-                <x-application-logo width=64 height=64 />
-            </a>
-        </x-slot>
-
         <div class="mb-4 text-muted">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('auth.forgot_password_info') }}
         </div>
 
         <!-- Session Status -->
@@ -21,14 +15,18 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="" type="email" name="email" :value="old('email')" required autofocus />
+                <x-label for="email" :value="__('auth.inputs.email')" />
+                <x-input id="email" 
+                    class="" 
+                    type="email" 
+                    name="email" 
+                    :value="old('email')" 
+                    required autofocus />
             </div>
 
             <div class="d-flex justify-content-end mt-4">
                 <x-button>
-                    {{ __('Email Password Reset Link') }}
+                    {{ __('auth.buttons.reset_password_link') }}
                 </x-button>
             </div>
         </form>

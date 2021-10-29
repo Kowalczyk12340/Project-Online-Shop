@@ -1,13 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/" class="d-flex justify-content-center mb-4">
-                <x-application-logo width=64 height=64 />
-            </a>
-        </x-slot>
-
         <div class="mb-4 text-muted">
-            {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+            {{ __('auth.confirm_password_info') }}
         </div>
 
         <!-- Validation Errors -->
@@ -18,17 +12,17 @@
 
             <!-- Password -->
             <div>
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class=""
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                <x-label for="password" :value="__('auth.inputs.password')" />
+                <x-input id="password" 
+                    class=""
+                    type="password"
+                    name="password"
+                    required autocomplete="current-password" />
             </div>
 
             <div class="d-flex justify-content-end mt-4">
                 <x-button>
-                    {{ __('Confirm') }}
+                    {{ __('auth.buttons.confirm') }}
                 </x-button>
             </div>
         </form>
