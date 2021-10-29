@@ -1,10 +1,10 @@
-@props(['styles' => '', scripts => ''])
+@props(['styles' => '', 'scripts' => ''])
 
 <x-base-layout>
     <x-slot name="styles">
-        <link rel="stylesheet" href="{{ url(css/form.css) }}">
+        <link rel="stylesheet" href="{{ url('css/form.css') }}">
         {{ $styles }}
-    </x-slot>
+    </x-slot>    
     <div class="form">
         {{ $slot }}
     </div>
