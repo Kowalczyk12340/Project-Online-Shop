@@ -41,14 +41,14 @@
           <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
               Home
           </x-nav-link>
-        </li>   
-        @can('log-viewer') 
+        </li>
+        @can('log-viewer')
         <li class="nav-item">
           <x-nav-link :href="route('log-viewer::dashboard')">
               {{ __('translations.menu.log-viewer') }}
           </x-nav-link>
-        </li>             
-        @endcan        
+        </li>
+        @endcan                   
         <li class="nav-item">
           <x-nav-link class="disabled" aria-disabled="true">
               Disabled

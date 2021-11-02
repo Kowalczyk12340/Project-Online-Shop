@@ -177,7 +177,11 @@ return [
         /*
         * Permissions and roles
         */
-        Spatie\Permission\PermissionServiceProvider::class
+        Spatie\Permission\PermissionServiceProvider::class,
+        /*
+        Log
+        */
+        Arcanedev\LogViewer\LogViewerServiceProvider::class
     ],
 
     /*

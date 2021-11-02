@@ -13,12 +13,14 @@ class PermissionsSeeder extends Seeder
     {
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
+        Permission::create(['name' => 'log-viewer']);
         Permission::create(['name' => 'users.index']);
         Permission::create(['name' => 'users.store']);
         Permission::create(['name' => 'users.destroy']);
         Permission::create(['name' => 'users.change_role']);
 
         $userRole = Role::findByName(config('app.admin_role'));
+        $userRole->givePermissionTo('log-viewer');
         $userRole->givePermissionTo('users.index');
         $userRole->givePermissionTo('users.store');
         $userRole->givePermissionTo('users.destroy');
