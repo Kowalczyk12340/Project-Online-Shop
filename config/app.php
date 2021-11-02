@@ -174,7 +174,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        /*
+        * Permissions and roles
+        */
+        Spatie\Permission\PermissionServiceProvider::class
     ],
 
     /*
@@ -231,4 +234,6 @@ return [
 
     ],
 
+    'admin_role' => env('ADMIN_ROLE', 'admin'),
+    'user_role' => env('USER_ROLE', 'user')
 ];
