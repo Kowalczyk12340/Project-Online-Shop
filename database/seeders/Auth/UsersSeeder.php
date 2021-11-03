@@ -25,8 +25,44 @@ class UsersSeeder extends Seeder
         }
 
         $user = User::create([
+            'name' => 'Renata Administrator',
+            'email' => 'renata.admin@kowalczyk.com',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password' => Hash::make('marcingrafik1#'),
+        ]);
+
+        $adminRole = Role::findByName(config('app.admin_role'));
+        if(isset($adminRole)) {
+            $user->assignRole($adminRole);
+        }
+
+        $user = User::create([
             'name' => 'Marcin Kowalczyk',
             'email' => 'marcin.kowalczyk@kowalczyk.com',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password' => Hash::make('marcingrafik1#'),
+        ]);
+
+        $userRole = Role::findByName(config('app.user_role'));
+        if(isset($userRole)) {
+            $user->assignRole($userRole);
+        }
+
+        $user = User::create([
+            'name' => 'Renata Kowalczyk',
+            'email' => 'renata.kowalczyk@kowalczyk.com',
+            'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'password' => Hash::make('marcingrafik1#'),
+        ]);
+
+        $userRole = Role::findByName(config('app.user_role'));
+        if(isset($userRole)) {
+            $user->assignRole($userRole);
+        }
+
+        $user = User::create([
+            'name' => 'Tomasz Kowalczyk',
+            'email' => 'tomasz.kowalczyk@kowalczyk.com',
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'password' => Hash::make('marcingrafik1#'),
         ]);
