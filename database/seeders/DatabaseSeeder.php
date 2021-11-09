@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CategoriesSeeder;
 use Database\Seeders\ProductsSeeder;
-use Database\Seeders\ShoppingCartProductsSeeder;
+use Database\Seeders\ProductShoppingCartsSeeder;
 use Database\Seeders\ShoppingCartsSeeder;
 use Database\Seeders\StatusCartSeeder;
 use Database\Seeders\Auth\RolesSeeder;
@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusCartsSeeder::class);
         $this->call(ProductsSeeder::class);
         $this->call(ShoppingCartsSeeder::class);
-        $this->call(ShoppingCartProductsSeeder::class);
+        $this->call(ProductShoppingCartsSeeder::class);
     }
 }

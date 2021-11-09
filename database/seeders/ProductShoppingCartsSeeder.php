@@ -6,7 +6,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ShoppingCartProductsSeeder extends Seeder
+class ProductShoppingCartsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -33,7 +33,7 @@ class ShoppingCartProductsSeeder extends Seeder
         ];
 
         foreach ($shoppingcarts as $key => $cart) {
-            DB::table('shopping_cart_products')->insert([
+            DB::table('product_shopping_carts')->insert([
                 'id' => $key+1,
                 'product_id' => rand(1,12),
                 'quantity' => rand(2,5),
