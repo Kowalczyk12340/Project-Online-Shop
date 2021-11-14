@@ -8,28 +8,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ShoppingCart extends Model 
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ['user_id'];
 
     public function products()
     {
-        return $this->belongsToMany('App\Models\Product')->withTimestamps()->withPivot('quantity','sell_price');
-    }
-
-    public function product()
-    {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany(ProductShoppingCart::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function statusCart()
     {
-        return $this->belongsTo('App\Models\StatusCart');
+        return $this->belongsTo(StatusCart::class);
     }
 }

@@ -11,13 +11,13 @@ class Product extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public function shopping_cart()
+    public function product_shopping_cart()
     {
-        return $this->belongsToMany('App\Models\ShoppingCart');
+        return $this->belongsTo(ProductShoppingCart::class);
     }
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(Category::class);
     }
 }

@@ -1,5 +1,9 @@
 <x-guest-layout>
     <x-slot name="scripts">
+        <script>
+            
+        </script>
+    </x-slot>
       <script>
           console.log("Test biblioteki JQuery");
           var tmp = $('form');
