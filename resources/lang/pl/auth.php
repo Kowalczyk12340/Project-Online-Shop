@@ -43,5 +43,4 @@ return [
         'forgot_password' => 'Resetowanie hasła',
         'already_registered' => 'Posiadam już konto'
     ]
-
 ];
