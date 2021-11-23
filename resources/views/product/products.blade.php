@@ -3,21 +3,21 @@
     <section class="container-fluid my-5 dashboard">
         <div class="row m-0 p-0">
             <div class="col-12">
-            <h2 class="font-weight-bold mb-3">{{__('translation.products.index.products')}}</h2>
-                <a class="btn text-white mb-5 back" href={{route('product.create')}}>{{__('translation.products.create.addProduct')}}</a>
+            <h2 class="font-weight-bold mb-3">{{__('translations.products.index.products')}}</h2>
+                <a class="btn text-white mb-5 back" href={{route('product.create')}}>{{__('translations.products.create.addProduct')}}</a>
                 <table id="productTable" class="responsive-table-lg table table-striped mt-5 text-center table-hover "> 
                     <thead class="bg-dark text-white ">
                     <tr>
-                        <th>{{__('translation.products.index.id')}}</th>
-                        <th>{{__('translation.products.index.productName')}}</th>
-                        <th>{{__('translation.products.index.productCategory')}}</th>
-                        <th>{{__('translation.products.index.productUnitPrice')}}</th>
-                        <th>{{__('translation.products.index.productStockStatus')}}</th>
-                        <th>{{__('translation.products.index.created_at')}}</th>
-                        <th>{{__('translation.products.index.deleted_at')}}</th>
-                        <th>{{__('translation.products.index.details')}}</th>
-                        <th>{{__('translation.products.index.edit')}}</th>
-                        <th>{{__('translation.products.index.delete')}}</th>
+                        <th>{{__('translations.products.index.id')}}</th>
+                        <th>{{__('translations.products.index.productName')}}</th>
+                        <th>{{__('translations.products.index.productCategory')}}</th>
+                        <th>{{__('translations.products.index.productUnitPrice')}}</th>
+                        <th>{{__('translations.products.index.productStockStatus')}}</th>
+                        <th>{{__('translations.products.index.created_at')}}</th>
+                        <th>{{__('translations.products.index.deleted_at')}}</th>
+                        <th>{{__('translations.products.index.details')}}</th>
+                        <th>{{__('translations.products.index.edit')}}</th>
+                        <th>{{__('translations.products.index.delete')}}</th>
                     </tr>
                     </thead>
                 </table>
@@ -28,16 +28,16 @@
 
 @section('script')
     <script type="text/javascript">
-    let translate = ["{{__('translation.products.index.id')}}",
-        "{{__('translation.products.index.productName')}}",
-        "{{__('translation.products.index.productCategory')}}",
-        "{{__('translation.products.index.productUnitPrice')}}",
-        "{{__('translation.products.index.productStockStatus')}}",
-        "{{__('translation.products.index.created_at')}}",
-        "{{__('translation.products.index.deleted_at')}}",
-        "{{__('translation.products.index.details')}}",
-        "{{__('translation.products.index.edit')}}",
-        "{{__('translation.products.index.delete')}}" ];
+    let translate = ["{{__('translations.products.index.id')}}",
+        "{{__('translations.products.index.productName')}}",
+        "{{__('translations.products.index.productCategory')}}",
+        "{{__('translations.products.index.productUnitPrice')}}",
+        "{{__('translations.products.index.productStockStatus')}}",
+        "{{__('translations.products.index.created_at')}}",
+        "{{__('translations.products.index.deleted_at')}}",
+        "{{__('translations.products.index.details')}}",
+        "{{__('translations.products.index.edite')}}",
+        "{{__('translations.products.index.deletee')}}" ];
         $(document).ready(function() {
             $('#productTable').DataTable({
                 processing: true, // wyświetlanie komunikatu o przetwarzaniu

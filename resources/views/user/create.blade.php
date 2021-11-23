@@ -1,8 +1,8 @@
 @extends('admin.welcome')
 @section('content')
 <section class="container m-5 dashboard">
-    <a class="btn btn-dark mb-5" href={{route('user.index')}}>{{__('translation.users.create.back')}}</a> 
-        <h2 class="font-weight-bold">@if($edit) {{__('translation.products.create.editProduct')}} @else {{__('translation.products.create.addProduct')}} @endif</h2>
+    <a class="btn btn-dark mb-5" href={{route('user.index')}}>{{__('translations.users.create.back')}}</a> 
+        <h2 class="font-weight-bold">@if($edit) {{__('translations.products.create.editProduct')}} @else {{__('translations.products.create.addProduct')}} @endif</h2>
             <div class="row m-0 p-0">
                 <form method="post" @if($edit) action="{{route('user.update', ['user' => $user])}}" @else action="{{route('user.store')}}" @endif enctype="multipart/form-data">
                     @csrf
@@ -60,7 +60,7 @@
                         <label for="phone_number" class="form-check-label pb-2">Numer telefonu</label>
                         <input class="form-control" type="text" id="phone_number" name="phone_number" @if($edit) value="{{$user->phone_number}}"@endif placeholder="{{'Podaj numer telefonu'}}">
                     </div>
-                    <button type="sumbit" class="btn btn-success">{{__('translation.categories.create.save')}}</button>
+                    <button type="sumbit" class="btn btn-success">{{__('translations.categories.create.save')}}</button>
                 </form>
             </div>
     </section>

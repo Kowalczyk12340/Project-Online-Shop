@@ -11,15 +11,15 @@
                 <table class="table table-striped mt-5 ml-5 text-center vertical-align-middle table-hover table-responsive"> 
                     <thead class="bg-dark text-white ">
                     <tr>
-                        <th>{{__('translation.products.index.productName')}}</th>
-                        <th>{{__('translation.products.index.productCategory')}}</th>
-                        <th>{{__('translation.products.index.img')}}</th>
-                        <th>{{__('translation.products.index.productUnitPrice')}}</th>
-                        <th>{{__('translation.products.index.productQuantity')}}</th>
-                        <th>{{__('translation.products.index.productsSum')}}</th>
-                        <th>{{__('translation.products.index.details')}}</th>
-                        <th>{{__('translation.products.index.edit')}}</th>
-                        <th>{{__('translation.products.index.delete')}}</th>
+                        <th>{{__('translations.products.index.productName')}}</th>
+                        <th>{{__('translations.products.index.productCategory')}}</th>
+                        <th>{{__('translations.products.index.img')}}</th>
+                        <th>{{__('translations.products.index.productUnitPrice')}}</th>
+                        <th>{{__('translations.products.index.productQuantity')}}</th>
+                        <th>{{__('translations.products.index.productsSum')}}</th>
+                        <th>{{__('translations.products.index.details')}}</th>
+                        <th>{{__('translations.products.index.edit')}}</th>
+                        <th>{{__('translations.products.index.delete')}}</th>
                     </tr>
                     </thead>
                     @php $sum = 0  @endphp
@@ -36,13 +36,13 @@
                             <td class="align-middle"><a class="btn btn-info text-white" href="{{route('product.details', ['product' => $product])}}">{{'Szczegóły'}}</a></td>
                             @if($product->deleted_at == null)
                             <td class="align-middle">
-                                <a class="btn btn-warning text-black" href="{{route('edit_productClient', ['q' => $product->pivot->quantity, 'shoppingCart' =>$shoppingCarts ,'product' => $product])}}">{{__('translation.products.index.edit')}}</a>
+                                <a class="btn btn-warning text-black" href="{{route('edit_productClient', ['q' => $product->pivot->quantity, 'shoppingCart' =>$shoppingCarts ,'product' => $product])}}">{{__('translations.products.index.edit')}}</a>
                             </td>
                             <td class="align-middle">
                                 <form method="post" action="{{route('delete_productClient', ['shoppingCart' =>$shoppingCarts ,'product' => $product])}}">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger text-white" type="submit">{{__('translation.products.index.delete')}}</button>
+                                    <button class="btn btn-danger text-white" type="submit">{{__('translations.products.index.delete')}}</button>
                                 </form>
                             </td>
                             @else

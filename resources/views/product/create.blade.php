@@ -3,10 +3,10 @@
 <section class="container-fluid my-5 dashboard">
     <div class="row m-0 p-0">
         <div class="col-12">
-            <a class="btn back mx-lg-5 mb-5" href={{route('product.index')}}>{{__('translation.products.create.back')}}</a>
+            <a class="btn back mx-lg-5 mb-5" href={{route('product.index')}}>{{__('translations.products.create.back')}}</a>
             <div class="card cardBox mx-lg-5">
                 <div class="card-header bg-dark text-white">
-                    <h2 class="font-weight-bold">@if($edit) {{__('translation.products.create.editProduct')}} @else {{__('translation.products.create.addProduct')}} @endif</h2>
+                    <h2 class="font-weight-bold">@if($edit) {{__('translations.products.create.editProduct')}} @else {{__('translations.products.create.addProduct')}} @endif</h2>
                 </div>
                 <div class="card-body">
                     @if($errors->any())
@@ -51,7 +51,7 @@
                             <label for="description" class="form-check-label pb-2">Opis produktu</label>
                             <textarea class="form-control" type="text" id="description" name="description" placeholder="{{'Podaj opis produktu'}}">@if($edit){{$product->description}}@endif</textarea>
                         </div>
-                        <button type="sumbit" class="btn send">{{__('translation.categories.create.save')}}</button>
+                        <button type="sumbit" class="btn send">{{__('translations.categories.create.save')}}</button>
                     </form>
                 </div>
             </div>

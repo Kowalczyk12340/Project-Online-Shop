@@ -10,7 +10,7 @@
                     <th>{{'Imię i nazwisko'}}</th>
                     <th>{{'Status'}}</th>
                     <th>{{'Utworzony'}}</th>
-                    <th>{{__('translation.shoppingCarts.index.details')}}</th>
+                    <th>{{__('translations.shoppingCarts.index.details')}}</th>
                 </tr>
             </thead> 
         </table>
@@ -25,7 +25,7 @@
                         "{{'Imię i nazwisko'}}",
                         "{{'Status'}}",
                         "{{'Utworzony'}}",
-                        "{{__('translation.shoppingCarts.index.details')}}"
+                        "{{__('translations.shoppingCarts.index.details')}}"
     ];
         $(document).ready(function() {
             $('#orderTable').DataTable({

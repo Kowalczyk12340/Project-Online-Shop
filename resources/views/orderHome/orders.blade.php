@@ -11,7 +11,7 @@
                         <th>{{'Imię i nazwisko'}}</th>
                         <th>{{'Status'}}</th>
                         <th>{{'Utworzony'}}</th>
-                        <th>{{__('translation.shoppingCarts.index.details')}}</th>
+                        <th>{{__('translations.shoppingCarts.index.details')}}</th>
                     </tr>
                     </thead>
 

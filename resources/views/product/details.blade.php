@@ -3,7 +3,7 @@
 <section class="container-fluid my-5 dashboard">
     <div class="row m-0 p-0">
         <div class="col-xl-8 offset-xl-2 text-center text-xl-left">
-            <a class="btn back mb-5" href={{route('product.index')}}>{{__('translation.products.create.back')}}</a>
+            <a class="btn back mb-5" href={{route('product.index')}}>{{__('translations.products.create.back')}}</a>
             <h2 class="font-weight-bold text-center mb-3">Szczegóły</h2>
             <img width="350" class="float-xl-right mt-xl-4 img-fluid mt-2" src="{{$product->image}}">
             <div class="mt-xl-5">

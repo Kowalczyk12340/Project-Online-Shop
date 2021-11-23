@@ -3,18 +3,18 @@
     <section class="container-fluid my-5 dashboard">
         <div class="row m-0 p-0">
             <div class="col-12">
-            <h2 class="font-weight-bold">{{__('translation.categories.index.categories')}}</h2>
-            <a class="btn back text-white mt-3 mb-5" href={{route('category.create')}}>{{__('translation.categories.create.addCategory')}}</a>
+            <h2 class="font-weight-bold">{{__('translations.categories.index.categories')}}</h2>
+            <a class="btn back text-white mt-3 mb-5" href={{route('category.create')}}>{{__('translations.categories.create.addCategory')}}</a>
                 <table id="categoryTable" class="table table-striped mt-5 table-hover text-center responsive-table-lg ">
                     <thead class="bg-dark text-white">
                     <tr>
-                        <th>{{__('translation.categories.index.id')}}</th>
-                        <th>{{__('translation.categories.index.categoryName')}}</th>
-                        <th>{{__('translation.categories.index.img')}}</th>
-                        <th>{{__('translation.categories.index.created_at')}}</th>
-                        <th>{{__('translation.categories.index.deleted_at')}}</th>
-                        <th>{{__('translation.categories.index.edit')}}</th>
-                        <th>{{__('translation.categories.index.delete')}}</th>
+                        <th>{{__('translations.categories.index.id')}}</th>
+                        <th>{{__('translations.categories.index.categoryName')}}</th>
+                        <th>{{__('translations.categories.index.img')}}</th>
+                        <th>{{__('translations.categories.index.created_at')}}</th>
+                        <th>{{__('translations.categories.index.deleted_at')}}</th>
+                        <th>{{__('translations.categories.index.edit')}}</th>
+                        <th>{{__('translations.categories.index.delete')}}</th>
                     </tr>
                     </thead>
                 </table>
@@ -26,13 +26,13 @@
 @section('script')
     <script type="text/javascript">
     let translate = [
-        "{{__('translation.categories.index.id')}}",
-        "{{__('translation.categories.index.categoryName')}}",
-        "{{__('translation.categories.index.img')}}",
-        "{{__('translation.categories.index.created_at')}}",
-        "{{__('translation.categories.index.deleted_at')}}",
-        "{{__('translation.categories.index.edit')}}",
-        "{{__('translation.categories.index.delete')}}"
+        "{{__('translations.categories.index.id')}}",
+        "{{__('translations.categories.index.categoryName')}}",
+        "{{__('translations.categories.index.img')}}",
+        "{{__('translations.categories.index.created_at')}}",
+        "{{__('translations.categories.index.deleted_at')}}",
+        "{{__('translations.categories.index.edit')}}",
+        "{{__('translations.categories.index.delete')}}"
     ];
         $(document).ready(function() {
             $('#categoryTable').DataTable({
@@ -91,4 +91,3 @@
         });
     </script>
 @endsection
-

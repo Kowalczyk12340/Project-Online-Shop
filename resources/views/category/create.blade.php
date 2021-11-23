@@ -3,10 +3,10 @@
 <section class="container-fluid my-5 dashboard">
     <div class="row m-0 p-0">
         <div class="col-12">
-            <a class="btn back mb-5 mx-lg-5" href={{route('category.index')}}>{{__('translation.categories.create.back')}}</a>
+            <a class="btn back mb-5 mx-lg-5" href={{route('category.index')}}>{{__('translations.categories.create.back')}}</a>
             <div class="card cardBox mx-lg-5">
                 <div class="card-header bg-dark text-white">
-                    <h2 class="font-weight-bold mb-0">@if($edit) {{__('translation.categories.create.editCategory')}} @else {{__('translation.categories.create.addCategory')}} @endif</h2>
+                    <h2 class="font-weight-bold mb-0">@if($edit) {{__('translations.categories.create.editCategory')}} @else {{__('translations.categories.create.addCategory')}} @endif</h2>
                 </div>
                 <div class="card-body">
                     @if($errors->any())
@@ -29,7 +29,7 @@
                             <label for="image" class="form-check-label pb-2">Zdjęcie</label>
                             <input class="form-control" type="file" id="image" name="image" @if($edit) value="{{$category->image}}" @endif placeholder="{{'Dodaj zdjęcie'}}">
                         </div>
-                        <button type="submit" class="btn send mt-2">{{__('translation.categories.create.save')}}</button>
+                        <button type="submit" class="btn send mt-2">{{__('translations.categories.create.save')}}</button>
                     </form>
                 </div>
             </div>

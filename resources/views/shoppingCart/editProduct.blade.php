@@ -3,8 +3,8 @@
 <section class="container m-5 dashboard d-flex justify-content-center">
     <div class="row m-0 p-0">
         <div class="col-12">
-            <a class="btn btn-dark mb-5" href="{{url()->previous()}}">{{__('translation.products.create.back')}}</a> 
-                <h2 class="font-weight-bold">@if($edit) {{__('translation.products.create.editProduct')}} @else {{__('translation.products.create.addProduct')}} @endif</h2>
+            <a class="btn btn-dark mb-5" href="{{url()->previous()}}">{{__('translations.products.create.back')}}</a> 
+                <h2 class="font-weight-bold">@if($edit) {{__('translations.products.create.editProduct')}} @else {{__('translations.products.create.addProduct')}} @endif</h2>
                 <form method="post" @if($edit) action="{{route('shoppingCart.update_product', ['shoppingCartProd' => $shoppingCartProd[0]])}}" @else action="{{route('shoppingCart.store_product')}}" @endif enctype="multipart/form-data">
                     @csrf
                     @if($edit) @method('put') @endif
@@ -29,7 +29,7 @@
                         <label for="quantity" class="form-check-label pb-2">Ilość:</label>
                         @if($edit)<input class="form-control col-3" type="text" id="quantity" name="quantity" value="{{number_format($q,0)}}"  placeholder="{{'Podaj ilość'}}">  @endif
                     </div>
-                    <button type="sumbit" class="btn btn-success">{{__('translation.categories.create.save')}}</button>
+                    <button type="sumbit" class="btn btn-success">{{__('translations.categories.create.save')}}</button>
                 </form>
             </div>
         </div>

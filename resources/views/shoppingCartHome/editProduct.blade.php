@@ -2,10 +2,10 @@
 @section('content')
 <section class="container">
 <div class="row m-0 p-0 col-12">
-    <a class="btn btn-dark my-5 offset-col-6 col-2 mx-5 justify-content-start" href="{{url()->previous()}}">{{__('translation.products.create.back')}}</a> 
+    <a class="btn btn-dark my-5 offset-col-6 col-2 mx-5 justify-content-start" href="{{url()->previous()}}">{{__('translations.products.create.back')}}</a> 
 
 <div class="col-12">
-        <h2 class="font-weight-bold ml-5 mb-4">@if($edit) {{__('translation.products.create.editProduct')}} @else {{__('translation.products.create.addProduct')}} @endif</h2>
+        <h2 class="font-weight-bold ml-5 mb-4">@if($edit) {{__('translations.products.create.editProduct')}} @else {{__('translations.products.create.addProduct')}} @endif</h2>
                 <form class="ml-5 mb-3" method="post" @if($edit) action="{{route('update_productClient', ['shoppingCartProd' => $shoppingCartProd[0]])}}" @else action="{{route('shoppingCart.store_product')}}" @endif enctype="multipart/form-data">
                     @csrf
                     @if($edit) @method('put') @endif
@@ -30,7 +30,7 @@
                         <label for="quantity" class="form-check-label pb-2">Ilość:</label>
                         @if($edit)<input class="form-control col-4" type="text" id="quantity" name="quantity" value="{{number_format($q,2)}}"  placeholder="{{'Podaj ilość'}}">  @endif
                     </div>
-                    <button type="sumbit" class="btn btn-success">{{__('translation.categories.create.save')}}</button>
+                    <button type="sumbit" class="btn btn-success">{{__('translations.categories.create.save')}}</button>
                 </form>
         </div>
         </div>

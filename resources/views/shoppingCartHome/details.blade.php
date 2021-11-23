@@ -3,17 +3,17 @@
 <section class="container-fluid my-5 dashboard d-flex justify-content-center">
         <div class="row m-0 p-0">
             <div class="col-12">
-                <a class="btn btn-dark mb-5"  @if($shoppingCart->status_cart_id == 1) href={{route('shoppingCart.index_orders')}} @else href={{route('shoppingCart.index')}} @endif>{{__('translation.products.create.back')}}</a>
+                <a class="btn btn-dark mb-5"  @if($shoppingCart->status_cart_id == 1) href={{route('shoppingCart.index_orders')}} @else href={{route('shoppingCart.index')}} @endif>{{__('translations.products.create.back')}}</a>
                 <h2 class="font-weight-bold mb-3">{{'Produkty z koszyka'}}</h2>
                 <table id="shoppingCartDetailsClient" class="table table-striped mt-5 text-center vertical-align-middle table-hover table-responsive"> 
                     <thead class="bg-dark text-white ">
                     <tr>
-                        <th>{{__('translation.products.index.productName')}}</th>
-                        <th>{{__('translation.products.index.productCategory')}}</th>
-                        <th>{{__('translation.products.index.img')}}</th>
-                        <th>{{__('translation.products.index.productUnitPrice')}}</th>
-                        <th>{{__('translation.products.index.productQuantity')}}</th>
-                        <th>{{__('translation.products.index.productsSum')}}</th>
+                        <th>{{__('translations.products.index.productName')}}</th>
+                        <th>{{__('translations.products.index.productCategory')}}</th>
+                        <th>{{__('translations.products.index.img')}}</th>
+                        <th>{{__('translations.products.index.productUnitPrice')}}</th>
+                        <th>{{__('translations.products.index.productQuantity')}}</th>
+                        <th>{{__('translations.products.index.productsSum')}}</th>
                     </tr>
                     </thead>
                     <tbody>
