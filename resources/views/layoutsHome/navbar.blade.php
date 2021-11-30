@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav d-flex justify-content-end w-100">
             <div class="">
-                <a class="nav-link text-white mr-3 mt-2" href="{{route('product.index_all')}}"><i class="fas fa-swimmer"></i> Produkty <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-white mr-3 mt-2" href="{{route('product.index_all')}}"><i style="margin-top: 10px;" class="fas fa-swimmer"></i> Produkty <span class="sr-only">(current)</span></a>
             </div>
             <div class="">
             <ul class="navbar-nav">
@@ -27,6 +27,9 @@
                 </li>
                 @endguest
                 @auth
+                <a class="btn text-white nav-link" style="background-color: #05742a; margin-top: 16px; height: 34px; border:#05742a; color: white;" href="http://localhost:8000/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> {{'Wyloguj'}} 
+                </a>
                 <li class="nav-item mt-sm-2">
                     <div class="dropdown d-inline-block nav-link">
                         <button class="btn btn-light dropdown-toggle" style="background-color: #05742a; border: #05742a; color: white;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
