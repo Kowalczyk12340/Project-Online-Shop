@@ -25,6 +25,11 @@
                   <i class="fas fa-luggage-cart"></i>{{'Zamówienia'}}
               </a>
           </li>
+          <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">
+            <a href="{{ route('log-viewer::logs.list') }}" class="nav-link">
+                <i class="fa fa-archive"></i> @lang('Logs')
+            </a>
+        </li>
           <li class="nav-item send">
               <a class="nav-link" href="http://localhost:8000/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
                   <i class="fas fa-sign-out-alt"></i>{{'Wyloguj'}}
