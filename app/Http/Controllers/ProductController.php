@@ -43,7 +43,7 @@ class ProductController extends Controller
                     if (!$product->deleted_at) {
                         $button .= '<a class="btn btn-warning text-dark" href="';
                         $button .= route('product.edit', $product);
-                        $button .= '">' . __('translation.products.index.edit') . '</a>';
+                        $button .= '">' . __('translations.products.index.edit') . '</a>';
                     }
                     return $button;
                 })
@@ -51,7 +51,7 @@ class ProductController extends Controller
                     $button = '';
                     if (!$product->deleted_at) {
                         $button .= '<a class="btn btn-danger text-white">';
-                        $button .= __('translation.products.index.delete') . '</a>';
+                        $button .= __('translations.products.index.delete') . '</a>';
                     }
                     return $button;
                 })

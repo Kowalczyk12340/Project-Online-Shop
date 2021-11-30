@@ -36,8 +36,8 @@
         "{{__('translations.products.index.created_at')}}",
         "{{__('translations.products.index.deleted_at')}}",
         "{{__('translations.products.index.details')}}",
-        "{{__('translations.products.index.edite')}}",
-        "{{__('translations.products.index.deletee')}}" ];
+        "{{__('translations.products.index.edit')}}",
+        "{{__('translations.products.index.delete')}}" ];
         $(document).ready(function() {
             $('#productTable').DataTable({
                 processing: true, // wyświetlanie komunikatu o przetwarzaniu

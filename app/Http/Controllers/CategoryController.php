@@ -39,7 +39,7 @@ class CategoryController extends Controller
                     if (!$category->deleted_at) {
                         $button .= '<a class="btn btn-warning text-dark" href="';
                         $button .= route('category.edit', $category);
-                        $button .= '">' . __('translation.categories.index.edit') . '</a>';
+                        $button .= '">' . __('translations.categories.index.edit') . '</a>';
                     }
                     return $button;
                 })
@@ -47,7 +47,7 @@ class CategoryController extends Controller
                     $button = '';
                     if (!$category->deleted_at) {
                         $button .= '<a class="btn btn-danger text-white">';
-                        $button .= __('translation.categories.index.delete') . '</a>';
+                        $button .= __('translations.categories.index.delete') . '</a>';
                     }
                     return $button;
                 })

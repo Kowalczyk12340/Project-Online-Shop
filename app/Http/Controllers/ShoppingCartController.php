@@ -47,7 +47,7 @@ class ShoppingCartController extends Controller
                     $button = '';
                     if (!$shoppingCart->deleted_at) {
                         $button .= '<a class="btn btn-danger text-white">';
-                        $button .= __('translation.products.index.delete') . '</a>';
+                        $button .= __('translations.products.index.delete') . '</a>';
                     }
                     return $button;
                 })

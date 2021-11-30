@@ -92,7 +92,7 @@ class ProductDataTable extends DataTable
                     $buttons .= ' href="' . route('categories.show', $category->id) .'"';
                     $buttons .= 'data-toggle="tooltip"
                         data-placement="top"';
-                    $buttons .= 'data-title="' . __('translation.buttons.show') . '"';
+                    $buttons .= 'data-title="' . __('translations.buttons.show') . '"';
                     $buttons .= '><span class="fas fa-info-circle" aria-hidden="true">
                         </span></a>';
 
@@ -104,7 +104,7 @@ class ProductDataTable extends DataTable
                         $buttons .= 'data-toggle="tooltip"
                             data-placement="top"';
                         $buttons .= 'data-title="' . __(
-                                'translation.buttons.edit', ['model' => 'kategorię']
+                                'translations.buttons.edit', ['model' => 'kategorię']
                             ) . '"';
                         $buttons .= '><span class="far fa-edit" aria-hidden="true">
                             </span></a>';
@@ -120,10 +120,10 @@ class ProductDataTable extends DataTable
                             . route('categories.destroy', ['id' => $category->id])
                             . '"';
                         $buttons .= 'data-title="'
-                            . __('translation.buttons.delete')
+                            . __('translations.buttons.delete')
                             . '"';
                         $buttons .= 'data-message="'
-                            . __('translation.categories.destroy.messages.question')
+                            . __('translations.categories.destroy.messages.question')
                             . ' ' . $category->name . '?'
                             . '"';
                         $buttons .= '">';
@@ -138,7 +138,7 @@ class ProductDataTable extends DataTable
                         $buttons .= ' href="' . route('categories.restore', $category->id) .'"';
                         $buttons .= 'data-toggle="tooltip"
                             data-placement="top"';
-                        $buttons .= 'data-title="' . __('translation.buttons.restore') . '"';
+                        $buttons .= 'data-title="' . __('translations.buttons.restore') . '"';
                         $buttons .= '><span class="fas fa-power-off" aria-hidden="true">
                             </span></a>';
                     }
