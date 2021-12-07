@@ -1,6 +1,8 @@
 window._ = require('lodash');
 
 require('bootstrap');
+require('./bootstrap.bundle');
+require('./bootstrap.esm');
 require('bootstrap-icons/font/bootstrap-icons.css');
 
 /**

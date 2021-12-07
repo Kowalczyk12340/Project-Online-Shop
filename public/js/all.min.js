@@ -38,7 +38,7 @@ var defaultDatatableSettings = {
                         if(colSearch != undefined) {
                             $(select).val(colSearch.search);
                             $(select).select2({
-                                theme: 'bootstrap4',
+                                theme: 'bootstrap5',
                                 placeholder: $(select).data('placeholder'),
                                 width: '100%',
                                 allowClear: true
