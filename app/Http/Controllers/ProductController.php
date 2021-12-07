@@ -146,7 +146,6 @@ class ProductController extends Controller
     public function delete(Product $product)
     {
         $product = $product->findOrFail($product->id);
-
         $product->delete();
         return redirect()->route('product.index');
     }
