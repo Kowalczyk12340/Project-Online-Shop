@@ -12,7 +12,7 @@
       left: 0;
       width: 150px;
       scrollbar-width: thin;
-      background-color: #051b31;
+      background-color: #01203f;
     }
   
     #menu,
@@ -61,7 +61,7 @@
   #sidebar-left li.nav-item:hover a.nav-link i,
   #sidebar-left li.nav-item.active a.nav-link,
   #sidebar-left li.nav-item.active a.nav-link i {
-    color: #000;
+    color: rgb(66, 2, 2);
   }
   
   #sidebar-left li.nav-item a.nav-link {
@@ -89,7 +89,7 @@
   
   #sidebar-left li.nav-item .dropdown-menu a.dropdown-item:hover {
     background-color: #066b20;
-    color: #000;
+    color: rgb(66, 2, 2);
   }
   
   .footer {
