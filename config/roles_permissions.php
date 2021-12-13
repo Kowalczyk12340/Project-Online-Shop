@@ -7,7 +7,7 @@
 return [
     'roles' => [
         'admin',
-        'client',
+        'user',
     ],
 
     'permissions' => [
@@ -25,7 +25,7 @@ return [
         'admin' => [
 
         ],
-        'client' => [
+        'user' => [
             'shoppingCart.indexClient',
             'edit_productClient',
             'update_productClient',

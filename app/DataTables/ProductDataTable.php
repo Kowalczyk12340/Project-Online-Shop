@@ -97,7 +97,7 @@ class ProductDataTable extends DataTable
                     $buttons .= '><span class="fas fa-info-circle" aria-hidden="true">
                         </span></a>';
 
-                    if (Auth::user()->can('categories.store'))
+                    if (Auth::user())
                     {
                         // przycisk edycji
                         $buttons .= '<a class="btn btn-primary btn-sm"';
@@ -110,7 +110,7 @@ class ProductDataTable extends DataTable
                         $buttons .= '><span class="far fa-edit" aria-hidden="true">
                             </span></a>';
                     }
-                    if (Auth::user()->can('categories.destroy'))
+                    if (Auth::user())
                     {
                         // przycisk usuwania
                         $buttons .= '<button type="button"
@@ -132,7 +132,7 @@ class ProductDataTable extends DataTable
                             </button>';
                     }
                 } else {
-                    if (Auth::user()->can('categories.destroy'))
+                    if (Auth::user())
                     {                    
                         // przycisk przywracania usuniętego elementu
                         $buttons .= '<a class="btn btn-success btn-sm"';
