@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav d-flex justify-content-end w-100">
             <div class="">
-                <a class="nav-link text-white mr-3 mt-2" href="{{route('product.index_all')}}"><i style="margin-top: 10px;" class="fas fa-swimmer"></i> Produkty <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-white mr-3 mt-2" href="{{route('product.index_all')}}"><i class="fas fa-swimmer"></i> Produkty <span class="sr-only">(current)</span></a>
             </div>
             <div class="">
             <ul class="navbar-nav">

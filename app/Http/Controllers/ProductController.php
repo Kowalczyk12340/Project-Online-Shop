@@ -147,6 +147,18 @@ class ProductController extends Controller
     {
         $product = $product->findOrFail($product->id);
         $product->delete();
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')
+        ->with('success', __('translations.products.flashes.success.destroy'));
+    }
+
+    public function restore(int $id)
+    {
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $product->restore();
+        return redirect()->route('product.index')
+        ->with('success', __('translations.products.flashes.success.restore',[
+            'name' => $product->name
+            ])
+        );
     }
 }
