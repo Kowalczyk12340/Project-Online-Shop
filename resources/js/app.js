@@ -7,5 +7,5 @@ require('./bootstrap.esm');
 require('./bootstrap.min.js');
 require('./bootstrap.bundle.min.js');
 require('bootstrap-icons/font/bootstrap-icons.css');
-
+require('../../public/vendor/jsvalidation/js/jsvalidation');
 require('alpinejs');

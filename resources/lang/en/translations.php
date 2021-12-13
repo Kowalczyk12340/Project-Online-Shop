@@ -1,6 +1,26 @@
 <?php
 
 return[
+    'menu' => [
+        'dictionaries' => 'Słowniki',
+        'administration' => 'Administracja',
+        'users' => 'Użytkownicy',
+        'log-viewer' => 'Logi',
+        'profile' => 'Profil',
+        'settings' => 'Ustawienia'
+    ],
+    'labels' => [
+        'pln' => 'zł',
+        'select2-placeholder' => 'Wybierz opcję'
+    ],
+'buttons' => [
+        'cancel' => 'Anuluj',
+        'store' => 'Dodaj',
+        'delete' => 'Usuń',
+        'update' => 'Aktualizuj',
+        'yes' => 'Tak',
+        'no' => 'Nie'
+],
 'categories' =>[
     'create' => [
         'save' => 'Zapisz',
@@ -8,7 +28,6 @@ return[
         'addCategory' => 'Dodaj kategorie',
         'back' => 'Powrót',
     ],
-
     'index' => [
         'categories' => 'Kategorie',
         'id' => 'Id',
@@ -19,7 +38,21 @@ return[
         'edit' => 'Edytuj',
         'delete' => 'Usuń',
         'img' => 'Zdjęcie',
-    ]
+    ],
+    'flashes' => [
+        'success' => [
+            'stored' => 'Dodano kategorię :name',
+            'updated' => 'Zaktualizowano kategorię :name',
+            'nothing-changed' => 'Dane kategorii :name nie zmieniły się',
+            'destroy' => 'Kategoria :name została usunięty',
+            'restore' => 'Usunięcie kategorii :name zostało anulowane'
+        ]
+    ],
+    'edit' => 'Edycja danych kategorii',
+    'destroy' => 'Usunięcie kategorii',
+    'destroy-question' => 'Czy na pewno usunąć kategorię :name?',
+    'restore' => 'Anulowanie usunięcia kategorii',
+    'restore-question' => 'Czy anulować usunięcie kategorii :name?'
 ],
 
 'products' =>[
@@ -48,7 +81,21 @@ return[
         'productQuantity' => 'Ilość',
         'productsSum' => 'Razem',
         'img' => 'Zdjęcie',
-    ]
+    ],
+    'flashes' => [
+        'success' => [
+            'stored' => 'Dodano produkt :name',
+            'updated' => 'Zaktualizowano produkt :name',
+            'nothing-changed' => 'Dane produktu :name nie zmieniły się',
+            'destroy' => 'Produkt :name został usunięty',
+            'restore' => 'Usunięcie produktu :name zostało anulowane'
+        ]
+    ],
+    'edit' => 'Edycja danych produktu',
+            'destroy' => 'Usunięcie produktu',
+            'destroy-question' => 'Czy na pewno usunąć produkt :name?',
+            'restore' => 'Anulowanie usunięcia produktu',
+            'restore-question' => 'Czy anulować usunięcie produktu :name?'
 ],
 
     'users' =>[

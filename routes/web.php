@@ -78,7 +78,7 @@ Route::group(['middleware' => ['admin']], function(){
 Route::get('/',[ProductController::class, 'indexAll'])->name('product.index_all');
 Route::get('products/all/{category}',[ProductController::class, 'indexAllCategory'])->name('product.index_all_category');
 Route::get('products/details/{product}',[ProductController::class, 'productDetails'])->name('product.details');
-/*Route::get('productDetails/{product}', [ShoppingCartController::class, 'productDetails'])->name('product_details');*/
+Route::get('productDetails/{product}', [ShoppingCartController::class, 'productDetails'])->name('product_details');
 
 Route::get('createProduct/{shoppingCart}', [ShoppingCartController::class, 'createProduct'])->name('create_productClient');
 

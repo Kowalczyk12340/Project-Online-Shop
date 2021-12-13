@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Services\DataTable;
+use Yajra\Datatables\Facades\Datatables;
 
 /**
  * KLasa odpowiedzialna za generowanie dany dla komponentu DataTable
@@ -30,7 +31,7 @@ class ProductDataTable extends DataTable
      */
     public function ajax()
     {
-        $datatable = \DataTables::eloquent($this->query())
+        $datatable = DataTables::eloquent($this->query())
             ->editColumn('created_at', function ($category) {
                 return $category->created_at;
             })

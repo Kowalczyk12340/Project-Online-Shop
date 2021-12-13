@@ -1,22 +1,16 @@
 <script>
-    jQuery(document).ready(function(){
+    jQuery(document).ready(function () {
 
-        $("<?= $validator['selector']; ?>").each(function() {
+        $("<?= $validator['selector']; ?>").each(function () {
             $(this).validate({
-                errorElement: 'span',
+                errorElement: 'div',
                 errorClass: 'invalid-feedback',
 
                 errorPlacement: function (error, element) {
-                    if (element.parent('.input-group').length ||
-                        element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
-                        error.insertAfter(element.parent());
-                        // else just place the validation message immediately after the input
-                    } else {
-                        error.insertAfter(element);
-                    }
+                    error.insertAfter(element);
                 },
                 highlight: function (element) {
-                    $(element).closest('.form-control').removeClass('is-valid').addClass('is-invalid'); // add the Bootstrap error class to the control group
+                    $(element).removeClass('is-valid').addClass('is-invalid'); // add the Bootstrap error class to the control group
                 },
 
                 <?php if (isset($validator['ignore']) && is_string($validator['ignore'])): ?>
@@ -24,13 +18,13 @@
                 ignore: "<?= $validator['ignore']; ?>",
                 <?php endif; ?>
 
-                
-                unhighlight: function(element) {
-                    $(element).closest('.form-control').removeClass('is-invalid').addClass('is-valid');
+
+                unhighlight: function (element) {
+                    $(element).removeClass('is-invalid').addClass('is-valid');
                 },
-                
+
                 success: function (element) {
-                    $(element).closest('.form-control').removeClass('is-invalid').addClass('is-valid'); // remove the Boostrap error class from the control group
+                    $(element).removeClass('is-invalid').addClass('is-valid'); // remove the Boostrap error class from the control group
                 },
 
                 focusInvalid: true,
