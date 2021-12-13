@@ -10,7 +10,7 @@
             </div>
             <div class="">
             <ul class="navbar-nav">
-                @role('client')
+                @role('user')
                 <li class="nav-item mt-2">
                     <a class="nav-link text-white mr-3" href="{{route('shoppingCart.indexClient')}}"><i class="fas fa-shopping-cart inline-block"></i> Koszyk</a>
                 </li>

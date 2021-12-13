@@ -9,7 +9,7 @@
                 <p class="text-center">{{$product->description}}</p>
                 <h3 class="text-center">Cena: {{$product->unit_price}} zł</h3>
                 <p class="text-center">Dostępne sztuki: {{number_format($product->stock_status,0)}}</p>
-                @if(Auth::check() && Auth::user()->hasRole('client'))
+                @if(Auth::check() && Auth::user()->hasRole('user'))
                 <form class="mb-5 h-flex" action="{{route('store_productClient')}}" method="POST">
                     @csrf
                     <label class="col-2 col-sm-2  col-md-3" id="quantity">Ilość:</label>

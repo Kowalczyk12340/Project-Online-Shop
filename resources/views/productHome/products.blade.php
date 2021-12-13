@@ -50,7 +50,7 @@
                         <h5 class="card-title">{{$product->name}}</h5>
                         <p class="card-text">{{$product->description}}</p>
                     </a>
-                    @if(Auth::check() && Auth::user()->hasRole('client'))
+                    @if(Auth::check() && Auth::user()->hasRole('user'))
                     <form action="{{route('store_productClient')}}" method="POST">
                         @csrf
                         <input type="hidden" class="text-center col-1"  value="1" name="quantity"></br>
