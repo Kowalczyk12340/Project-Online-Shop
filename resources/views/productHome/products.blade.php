@@ -53,7 +53,7 @@
                     @if(Auth::check() && Auth::user()->hasRole('user'))
                     <form action="{{route('store_productClient')}}" method="POST">
                         @csrf
-                        <input type="hidden" class="text-center col-1"  value="1" name="quantity"></br>
+                        <input type="hidden" class="text-center col-1"  value="1" name="quantity"> <br/>
                         <input type="hidden" name="product_id" value="{{$product->id}}">
                         <button type="submit" class="btn px-5 mt-2 text-white" @if($product->stock_status < 1) disabled  @endif style="background-color: #05742a;">Dodaj do koszyka</button>
                     </form>

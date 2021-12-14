@@ -10,11 +10,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    @section('scripts')
     <script src="{{ asset('js/manifest.js') }}"></script>
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/validateForms.js') }}"></script>
     <script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
+    @endsection
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,6 +25,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -81,6 +85,7 @@
 
         <main class="py-4">
             @yield('content')
+            @stack('scripts')
         </main>
     </div>
 </body>
