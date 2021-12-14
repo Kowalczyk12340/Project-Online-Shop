@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Categories\StoreCategoryRequest;
 use App\Http\Requests\Categories\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Events\CategoryDeleted;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -105,5 +106,25 @@ class CategoryController extends Controller
         $category = Category::findOrFail($category->id);
         $category->delete();
         return redirect()->route('category.index');
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        CategoryDeleted::dispatch($category);
+        return redirect()->route('categories.index')
+            ->with('success', __('translations.categories.flashes.success.destroy', [
+                'name' => $category->name
+            ]));
+    }
+
+    public function restore(int $id)
+    {
+        $category = Category::onlyTrashed()->findOrFail($id);
+        $category->restore();
+        return redirect()->route('categories.index')
+            ->with('success', __('translations.categories.flashes.success.restore', [
+                'name' => $category->name
+            ]));
     }
 }

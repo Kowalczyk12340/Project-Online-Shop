@@ -3,9 +3,10 @@
 namespace App\DataTables;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\ComponentAttributeBag;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\Datatables\Facades\Datatables;
 
@@ -163,5 +164,65 @@ class ProductDataTable extends DataTable
     {
         $categories = Category::withTrashed()->withCount('products');
         return $this->applyScopes($categories);
+    }
+
+    private function getDestroyButton(Product $product): string
+    {
+        if (isset($product->deleted_at)) {
+            return '';
+        }
+        if (!Auth::user()) {
+            return '';
+        }
+        return view('components.datatables.confirm', [
+            'slot' => '<i class="bi bi-trash"></i>',
+            'attributes' => new ComponentAttributeBag([
+                'action' => route('products.destroy', $product),
+                'method' => 'DELETE',
+                'confirm-text' => __('translations.buttons.yes'),
+                'confirm-class' => 'btn btn-danger me-2',
+                'cancel-text' => __('translations.buttons.no'),
+                'cancel-class' => 'btn btn-secondary ms-2',
+                'icon' => 'question',
+                'message' => __('translations.products.labels.destroy-question', ['name' => $product->name]),
+                'button-class' => 'btn btn-danger',
+                'button-title' => __('translations.products.labels.destroy')
+            ])
+        ])->render();
+    }
+
+    private function getActionButtons(Product $product): string
+    {
+        $buttons = '<div class="btn-group" role="group" aria-label="action buttons">';
+        $buttons .= $this->getDestroyButton($product);
+        $buttons .= $this->getRestoreButton($product);
+
+        $buttons .= '</div>';
+        return $buttons;
+    }
+
+    private function getRestoreButton(Product $product): string
+    {
+        if (!isset($product->deleted_at)) {
+            return '';
+        }
+        if (!Auth::user()) {
+            return '';
+        }
+        return view('components.datatables.confirm', [
+            'slot' => '<i class="bi bi-trash"></i>',
+            'attributes' => new ComponentAttributeBag([
+                'action' => route('products.restore', $product),
+                'method' => 'PUT',
+                'confirm-text' => __('translations.buttons.yes'),
+                'confirm-class' => 'btn btn-success me-2',
+                'cancel-text' => __('translations.buttons.no'),
+                'cancel-class' => 'btn btn-secondary ms-2',
+                'icon' => 'question',
+                'message' => __('translations.products.labels.restore-question', ['name' => $product->name]),
+                'button-class' => 'btn btn-success',
+                'button-title' => __('translations.products.labels.restore')
+            ])
+        ])->render();
     }
 }

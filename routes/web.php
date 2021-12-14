@@ -47,6 +47,16 @@ Route::group(['middleware' => ['admin']], function(){
         Route::put('{id}/restore', [ProductController::class, 'restore'])->name('restore');
     });
 
+    Route::delete('{category}', [CategoryController::class, 'destroy'])
+            ->where('category', '[0-9]+')
+            ->name('destroy')
+            ->middleware(['permission:category.store']);
+        // przywrócenie usuniętego wpisu 
+        Route::put('{id}/restore', [CategoryController::class, 'restore'])
+            ->where('id', '[0-9]+')
+            ->name('restore')
+            ->middleware(['permission:category.store']);
+
 
     Route::name('shoppingCart.')->prefix('shoppingCarts')->group(function () {
         Route::get('', [ShoppingCartController::class, 'index'])->name('index');

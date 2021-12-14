@@ -11,6 +11,10 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $cascadeDeletes = [
+        'products'
+    ];
+
     public function products()
     {
         return $this->hasMany(Product::class);
