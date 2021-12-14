@@ -14,7 +14,12 @@ class ShoppingCart extends Model
 
     public function products()
     {
-        return $this->hasMany(ProductShoppingCart::class);
+        return $this->belongsToMany(Product::class)->withTimestamps()->withPivot('quantity', 'sell_price');
+    }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 
     public function user()

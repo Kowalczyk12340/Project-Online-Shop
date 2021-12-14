@@ -33,7 +33,7 @@ class ProductShoppingCartsSeeder extends Seeder
         ];
 
         foreach ($shoppingcarts as $key => $cart) {
-            DB::table('product_shopping_carts')->insert([
+            DB::table('product_shopping_cart')->insert([
                 'id' => $key+1,
                 'product_id' => rand(1,12),
                 'quantity' => rand(2,5),

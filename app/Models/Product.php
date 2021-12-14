@@ -11,9 +11,9 @@ class Product extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public function product_shopping_cart()
+    public function shopping_cart()
     {
-        return $this->belongsTo(ProductShoppingCart::class);
+        return $this->belongsToMany(ShoppingCart::class)->withTimestamps();
     }
 
     public function category()

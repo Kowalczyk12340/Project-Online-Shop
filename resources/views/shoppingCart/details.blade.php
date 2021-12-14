@@ -27,8 +27,8 @@
                             <td class="align-middle">{{isset($product->category->category_name) ? $product->category->category_name : 'Dotychczasową kategorię usunięto edytuj produkt aby nadać mu jedną z istniejących' }}</td>
                             <td class="align-middle"> <img src="{{$product->image}}" style="height:50px; width:50px;"></td>
                             <td class="align-middle">{{$product->unit_price}} zł</td>
-                            <td class="align-middle">{{number_format($product->quantity,0)}} szt.</td>
-                            <td class="align-middle">{{$product->sell_price}} zł</td>
+                            <td class="align-middle">{{number_format($product->pivot->quantity,0)}} szt.</td>
+                            <td class="align-middle">{{$product->pivot->sell_price}} zł</td>
                             <td class="align-middle"><a class="btn btn-info text-white" href="{{route('shoppingCart.product_details', ['product' => $product])}}">{{'Szczegóły'}}</a></td>
                             @if($product->deleted_at == null && $shoppingCart->status_cart_id == 2)
                             <td class="align-middle">

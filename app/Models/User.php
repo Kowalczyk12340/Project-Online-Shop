@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function shoppingCart()
     {
-        return $this->belongsTo('App\Models\ShoppingCart');
+        return $this->belongsTo(ShoppingCart::class);
     }
 }
