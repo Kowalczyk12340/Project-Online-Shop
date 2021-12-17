@@ -33,6 +33,12 @@ Route::group(['middleware' => ['admin']], function(){
         Route::get('edit/{category}', [CategoryController::class, 'edit'])->name('edit');
         Route::put('update/{category}', [CategoryController::class, 'update'])->name('update');
         Route::delete('delete/{category}', [CategoryController::class, 'delete'])->name('delete');
+        Route::delete('delete/{category}', [CategoryController::class, 'destroy'])
+            ->where('category', '[0-9]+')
+            ->name('destroy');
+        Route::put('{id}/restore', [CategoryController::class, 'restore'])
+            ->where('id', '[0-9]+')
+            ->name('restore');
     });
 
 
@@ -47,15 +53,9 @@ Route::group(['middleware' => ['admin']], function(){
         Route::put('{id}/restore', [ProductController::class, 'restore'])->name('restore');
     });
 
-    Route::delete('{category}', [CategoryController::class, 'destroy'])
-            ->where('category', '[0-9]+')
-            ->name('destroy')
-            ->middleware(['permission:category.store']);
+            //->middleware(['permission:category.store']);
         // przywrócenie usuniętego wpisu 
-        Route::put('{id}/restore', [CategoryController::class, 'restore'])
-            ->where('id', '[0-9]+')
-            ->name('restore')
-            ->middleware(['permission:category.store']);
+            //->middleware(['permission:category.store']);
 
 
     Route::name('shoppingCart.')->prefix('shoppingCarts')->group(function () {
