@@ -93,14 +93,14 @@ Route::get('productDetails/{product}', [ShoppingCartController::class, 'productD
 
 Route::get('createProduct/{shoppingCart}', [ShoppingCartController::class, 'createProduct'])->name('create_productClient');
 
-Route::get('/shoppingCartClient', [ShoppingCartController::class, 'indexClient'])->name('shoppingCart.indexClient')->middleware('permission:shoppingCart.indexClient');
-Route::get('editProductClient/{product}/{q}', [ShoppingCartController::class, 'editProductClient'])->name('edit_productClient')->middleware('permission:edit_productClient');
-Route::put('updateProduct/{shoppingCartProd}', [ShoppingCartController::class, 'updateProductClient'])->name('update_productClient')->middleware('permission:update_productClient');
-Route::delete('deleteProduct/{shoppingCart}/{product}', [ShoppingCartController::class, 'deleteProductClient'])->name('delete_productClient')->middleware('permission:delete_productClient');
-Route::post('/pay/{shoppingCart}',[ShoppingCartController::class, 'pay'])->name('pay')->middleware('permission:pay');
-Route::post('/storeProductClient', [ShoppingCartController::class, 'storeProductClient'])->name('store_productClient')->middleware('permission:store_productClient');
-Route::get('/orders', [ShoppingCartController::class, 'indexOrdersClient'])->name('index_ordersClient')->middleware('permission:index_ordersClient');;
-Route::get('/show/{shoppingCart}', [ShoppingCartController::class, 'showClientCart'])->name('showClientCart')->middleware('permission:shoppingCart.showClientCart');;
+Route::get('/shoppingCartClient', [ShoppingCartController::class, 'indexClient'])->name('shoppingCart.indexClient');//->middleware('permission:shoppingCart.indexClient');
+Route::get('editProductClient/{product}/{q}', [ShoppingCartController::class, 'editProductClient'])->name('edit_productClient');//->middleware('permission:edit_productClient');
+Route::put('updateProduct/{shoppingCartProd}', [ShoppingCartController::class, 'updateProductClient'])->name('update_productClient');//->middleware('permission:update_productClient');
+Route::delete('deleteProduct/{shoppingCart}/{product}', [ShoppingCartController::class, 'deleteProductClient'])->name('delete_productClient');//->middleware('permission:delete_productClient');
+Route::post('/pay/{shoppingCart}',[ShoppingCartController::class, 'pay'])->name('pay');//->middleware('permission:pay');
+Route::post('/storeProductClient', [ShoppingCartController::class, 'storeProductClient'])->name('store_productClient');//->middleware('permission:store_productClient');
+Route::get('/orders', [ShoppingCartController::class, 'indexOrdersClient'])->name('index_ordersClient');//->middleware('permission:index_ordersClient');;
+Route::get('/show/{shoppingCart}', [ShoppingCartController::class, 'showClientCart'])->name('showClientCart');//->middleware('permission:shoppingCart.showClientCart');;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
