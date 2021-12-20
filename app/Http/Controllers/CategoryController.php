@@ -48,9 +48,9 @@ class CategoryController extends Controller
                     $button = '';
                     if (!$category->deleted_at) {
                         // przycisk usuwania
-                        $button .= '<a class="btn btn-danger text-white">';
-                        $button .= __('translations.categories.index.delete') . '</a>';
-                        /*$button .= '<form class="products" method="POST" action=' . route('category.destroy', $category) . '>';
+                        //$button .= '<a class="btn btn-danger text-white">';
+                        //$button .= __('translations.categories.index.delete') . '</a>';
+                        $button .= '<form class="products" method="POST" action=' . route('category.destroy', $category) . '>';
                         $button .= '<input type="submit" value='. __('translations.buttons.delete') . '/>';
                         $button .= '<button type="button"
                             class="btn btn-danger btn-sm destroy-button"
@@ -69,7 +69,7 @@ class CategoryController extends Controller
                         $button .= '">';
                         $button .= '<span class="fas fa-power-off" aria-hidden="true"></span>
                             </button>';
-                        $button .= '</form>';*/
+                        $button .= '</form>';
                     }
                     else 
                     {

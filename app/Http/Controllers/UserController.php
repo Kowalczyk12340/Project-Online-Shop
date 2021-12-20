@@ -12,7 +12,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        $roles = Role::all();
         return view('user.users', compact('users'));
     }
 
@@ -25,9 +24,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $edit = false;
-        $roles = Role::all();
-        return view('user.details', compact('user','roles'));
+        return view('user.create', compact('user'));
     }
 
     public function store(Request $r)
@@ -75,7 +72,7 @@ class UserController extends Controller
             $file = $r->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('/public/user/photos', $filename);
-            $user->photo = '/storage/user/photos/' . $filename;
+            $user->photo = '/storage/user/pgotos/' . $filename;
         }
         else{
             $user->photo = $user->photo;

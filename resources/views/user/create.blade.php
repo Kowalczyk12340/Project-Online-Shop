@@ -2,22 +2,19 @@
 @section('content')
 <section class="container m-5 dashboard">
     <a class="btn btn-dark mb-5" href={{route('user.index')}}>{{__('translations.users.create.back')}}</a> 
-        <h2 class="font-weight-bold">{{__('translations.users.create.editUser')}}</h2>
+        <h2 class="font-weight-bold">@if($edit) {{__('translations.products.create.editProduct')}} @else {{__('translations.products.create.addProduct')}} @endif</h2>
             <div class="row m-0 p-0">
-                <form method="post" action="{{route('user.update', ['user' => $user])}}" enctype="multipart/form-data">
-                   {{-- <h2class="font-weight-bold">@if($edit)__('translations.products.create.editProduct')}} @else {{__('translations.products.create.addProduct')}} @endif</h2>
-                    <div class="row m-0 p-0">
-                        <form method="post" @if($edit) action="{{route('user.update', ['user' => $user])}}" @else action="{{route('user.store')}}" @endif enctype="multipart/form-data">--}}
+                <form method="post" @if($edit) action="{{route('user.update', ['user' => $user])}}" @else action="{{route('user.store')}}" @endif enctype="multipart/form-data">
                     @csrf
                     @if($edit) @method('put') @endif
                     <div class="form-group">
                         <label for="name" class="form-check-label pb-2">Imię*</label>
                         <input class="form-control" type="text" id="name" name="name" @if($edit) value="{{$user->name}}"@endif placeholder="{{'Podaj imię'}}">
                     </div>
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label for="surname" class="form-check-label pb-2">Nazwisko*</label>
                         <input class="form-control" type="text" id="surname" name="surname" @if($edit) value="{{$user->surname}}"@endif placeholder="{{'Podaj nazwisko'}}">
-                    </div> --}}
+                    </div>
                     <div class="form-group">
                         <label for="email" class="form-check-label pb-2">Email*</label>
                         <input class="form-control" type="text" id="email" name="email" @if($edit) value="{{$user->email}}"@endif placeholder="{{'Podaj email'}}">
@@ -26,11 +23,18 @@
                         <label for="password" class="form-check-label pb-2">Hasło*</label>
                         <input class="form-control" type="password" id="password" name="password" @if($edit) value="{{$user->email}}"@endif placeholder="{{'Podaj email'}}">
                     </div>
-                    {{--
                     <div class="form-group">
                         <label for="photo" class="form-check-label pb-2">Zdjęcie profilowe</label>
                         <input class="form-control" type="file" id="photo" name="photo" @if($edit) value="{{$user->photo}}"@endif placeholder="{{'Dodaj zdjęcie'}}">
                         @if($edit)<img class="mt-2 image-fluid w-25 h-25" src="{{$user->photo}}">@endif
+                    </div>
+                    <div class="form-group">
+                        <label for="role" class="form-check-label pb-2">Kategoria produktu</label>
+                        <select class="form-control" id="role" name="role" @if($edit) value="{{$user->role}}"@endif placeholder="{{'Podaj nazwę produktu'}}">
+                            @foreach($roles as $role)
+                                <option @if($edit && $role->id == $user->role) selected @endif value="{{$role->name}}">{{$role->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="street" class="form-check-label pb-2">Ulica</label>
@@ -55,8 +59,8 @@
                     <div class="form-group">
                         <label for="phone_number" class="form-check-label pb-2">Numer telefonu</label>
                         <input class="form-control" type="text" id="phone_number" name="phone_number" @if($edit) value="{{$user->phone_number}}"@endif placeholder="{{'Podaj numer telefonu'}}">
-                    </div>   --}}
-                    <button type="submit" class="btn btn-success">{{__('translations.users.create.save')}}</button>
+                    </div>
+                    <button type="sumbit" class="btn btn-success">{{__('translations.categories.create.save')}}</button>
                 </form>
             </div>
     </section>

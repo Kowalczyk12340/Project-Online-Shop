@@ -25,11 +25,6 @@
                   <i class="fas fa-luggage-cart"></i>{{'Zamówienia'}}
               </a>
           </li>
-          <li class="nav-item {{ in_array(Route::currentRouteName(), ['user.index', 'user.create', 'user.edit']) ? 'active' : '' }}">
-            <a class="nav-link" href="{{route('user.index')}}">
-                <i class="fa fa-user"></i> @lang('Users')
-            </a>
-        </li>
           <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">
             <a href="{{ route('log-viewer::logs.list') }}" class="nav-link">
                 <i class="fa fa-archive"></i> @lang('Logs')
