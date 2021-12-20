@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use Hamcrest\Core\AllOf;
 use Yajra\DataTables\DataTables as DataTablesDataTables;
 use Yajra\DataTables\Facades\DataTables as FacadesDataTables;
 
@@ -96,7 +97,7 @@ class ShoppingCartController extends Controller
 
     public function indexClient()
     {
-        $shoppingCarts = ShoppingCart::where('user_id', Auth::user()->id)->where('status_cart_id', 2)->first();
+        $shoppingCarts = ShoppingCart::where('status_cart_id', 2)->where('user_id',Auth::user()->id)->first();
         return view('shoppingCartHome.shoppingCart', compact('shoppingCarts'));
     }
 

@@ -4,7 +4,7 @@
     <div class="row p-0 m-0 col-12 justify-content-center">
             <div class="col-12">
                 <h1 class="my-4 mx-5 font-weight-bold">Dane koszyka</h1>
-                <h5 class="mx-5"><span class="font-weight-bold">Imię, nazwisko:</span> {{$shoppingCarts->user->name .' '. $shoppingCarts->user->surname}}</h5>
+                <h5 class="mx-5"><span class="font-weight-bold">Imię, nazwisko:</span> {{$shoppingCarts->user->name}}</h5>
                 <h5 class="mx-5"><span class="font-weight-bold">Email: </span>{{$shoppingCarts->user->email}}</h5>
                 <h5 class="mx-5"><span class="font-weight-bold">Status: </span>{{$shoppingCarts->statusCart->status_name}}</h5>
                 <h5 class="mx-5"><span class="font-weight-bold">Razem: </span>{{number_format($shoppingCarts->total_price,2)}} zł</h5>
