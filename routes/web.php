@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\StatusCartController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
@@ -83,6 +85,12 @@ Route::group(['middleware' => ['admin']], function(){
         Route::get('edit/{user}', [UserController::class, 'edit'])->name('edit');
         Route::put('update{user}', [UserController::class, 'update'])->name('update');
         Route::delete('delete/{user}', [UserController::class, 'delete'])->name('delete');
+        Route::get('register', [RegisteredUserController::class, 'create'])
+                ->middleware('admin')
+                ->name('register');
+
+        Route::post('/register', [RegisteredUserController::class, 'store'])
+                ->middleware('admin');
     });
 });
 
