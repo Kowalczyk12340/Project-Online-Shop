@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image" class="form-check-label pb-2">Zdjęcie produktu</label>
-                        @if($edit)</br><img class="mt-2 image-fluid w-25 h-25" src="{{$product->image}}">@endif
+                        @if($edit)<br/><img class="mt-2 image-fluid w-25 h-25" src="{{$product->image}}">@endif
                     </div>
                     <div class="form-group">
                         <label for="unit_price" class="form-check-label pb-2">Cena produktu: @if($edit) {{$product->unit_price}} zł@endif</label>

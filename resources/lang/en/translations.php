@@ -109,7 +109,7 @@ return[
         'index' => [
             'users' => 'Użytkownicy',
             'id' => 'Id',
-            'userName' => 'Imie',
+            'userName' => 'Imie i Nazwisko',
             'userSurname' => 'Nazwisko',
             'userEmail' => 'Email',
             'created_at' => 'Data dodania',
