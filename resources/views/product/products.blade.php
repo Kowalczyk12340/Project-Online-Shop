@@ -104,8 +104,61 @@
                 $.each($('td', row), function(index){
                     $(this).attr('data-name',translate[index]);
                 });
-            }
+            },
+            drawCallback: function (setting) {
+                    deleteButton();
+                },
             });
         });
-    </script>
+        function deleteButton() {
+        $(document).ready(function() {
+        $("[data-delete-href]").click(function() {
+            var url = $(this).data("delete-href");
+            bootbox.confirm({
+                title: `Czy chcesz usunąć ?`,
+                message: `<div class="modal-icon"><i class="far fa-trash-alt mr-1"></i><span>Czy chcesz usunąć ten produkt?</span></div>`,
+                buttons: {
+                    confirm: {
+                        label: `<i class="fa fa-check mr-1"></i> Usuń`,
+                        className: 'btn-danger',
+                    },
+                    cancel: {
+                        label: `<i class="fa fa-times mr-1"></i>Zamknij`,
+                        className: 'back',
+                    },
+                },
+                centerVertical: true,
+                callback: function(confirm) {
+                    if( confirm ) {
+                        $.ajax({
+                            url: url,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            type: 'DELETE',
+                            success: function(result) {
+                                bootbox.alert({
+                                    title: `Usunięto`,
+                                    message: `<div class="modal-icon"><i class="fa fa-check text-success"></i><span>Usunięto</span></div>`,
+                                    centerVertical: true,
+                                    callback: function(confirm) {
+                                        $(location).attr("href", 'products');
+                                    },
+                                });
+                            },
+                            error: function() {
+                                bootbox.alert({
+                                    title: `Nie usunięto`,
+                                    message: `<div class="modal-icon"><i class="fa fa-times text-danger"></i><span>Nie usunięto</span></div>`,
+                                    centerVertical: true,
+                                });
+                            },
+                        });
+                    }
+                }
+            });
+        })
+    });
+}
+</script>
 @endsection

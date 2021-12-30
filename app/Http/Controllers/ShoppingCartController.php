@@ -48,8 +48,21 @@ class ShoppingCartController extends Controller
                 ->addColumn('delete', function ($shoppingCart) {
                     $button = '';
                     if (!$shoppingCart->deleted_at) {
-                        $button .= '<a class="btn btn-danger text-white">';
-                        $button .= __('translations.products.index.delete') . '</a>';
+                        $button .= '<a data-delete-href="';
+                            $button .=  route('shoppingCart.delete', $shoppingCart);
+                            $button .=   '"';
+                        $button .= 'class="btn btn-danger text-white"> ';
+                        $button .= __('translations.shoppingCarts.index.delete') . '</a>';
+                    }
+                    else 
+                    {
+                        // przycisk przywracania usuniętego elementu
+                        $button .= '<a class="btn btn-success btn-sm"';
+                        $button .= ' href="' . route('product.restore', $shoppingCart->id) .'"';
+                        $button .= 'data-toggle="tooltip"
+                                    data-placement="top"';
+                        $button .= 'data-title="' . __('translations.buttons.restore') . '"';
+                        $button .= '>Przywróć</a>';
                     }
                     return $button;
                 })
@@ -151,11 +164,27 @@ class ShoppingCartController extends Controller
 
     public function delete(ShoppingCart $shoppingCart)
     {
-        $shoppingCart = $shoppingCart->findOrFail($shoppingCart->id);
+        try 
+        {
+            $product = $shoppingCart->findOrFail($shoppingCart->id);
+            $product->delete();
+            return response()->json(['status'=>'success'], 200);
+        }
+        catch(Exception $ex)
+        {
+            return response()->json(['status'=>'fail'], 404);
+        }
+    }
 
-        $shoppingCart->delete();
-
-        return redirect()->route('shoppingCart.index');
+    public function restore(int $id)
+    {
+        $shoppingCart = ShoppingCart::onlyTrashed()->findOrFail($id);
+        $shoppingCart->restore();
+        return redirect()->route('shoppingCart.index')
+        ->with('success', __('translations.products.flashes.success.restore',[
+            'name' => $shoppingCart->name
+            ])
+        );
     }
 
     public function productDetails(Product $product)

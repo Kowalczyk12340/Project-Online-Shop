@@ -34,9 +34,9 @@ Route::group(['middleware' => ['admin']], function(){
         Route::post('store', [CategoryController::class, 'store'])->name('store');
         Route::get('edit/{category}', [CategoryController::class, 'edit'])->name('edit');
         Route::put('update/{category}', [CategoryController::class, 'update'])->name('update');
-        Route::delete('delete/{category}', [CategoryController::class, 'destroy'])
+        Route::delete('delete/{category}', [CategoryController::class, 'delete'])
             ->where('category', '[0-9]+')
-            ->name('destroy');
+            ->name('delete');
         Route::put('{id}/restore', [CategoryController::class, 'restore'])
             ->where('id', '[0-9]+')
             ->name('restore');

@@ -26,6 +26,7 @@
     </body>
     {{-- Globalne skrypty JS --}}
     <script src="{{ asset('js/manifest.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- Lokalne skrypty JS --}}

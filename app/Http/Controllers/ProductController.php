@@ -50,8 +50,21 @@ class ProductController extends Controller
                 ->addColumn('delete', function ($product) {
                     $button = '';
                     if (!$product->deleted_at) {
-                        $button .= '<a class="btn btn-danger text-white">';
+                        $button .= '<a data-delete-href="';
+                            $button .=  route('product.delete', $product);
+                            $button .=   '"';
+                        $button .= 'class="btn btn-danger text-white"> ';
                         $button .= __('translations.products.index.delete') . '</a>';
+                    }
+                    else 
+                    {
+                        // przycisk przywracania usuniętego elementu
+                        $button .= '<a class="btn btn-success btn-sm"';
+                        $button .= ' href="' . route('product.restore', $product->id) .'"';
+                        $button .= 'data-toggle="tooltip"
+                                    data-placement="top"';
+                        $button .= 'data-title="' . __('translations.buttons.restore') . '"';
+                        $button .= '>Przywróć</a>';
                     }
                     return $button;
                 })
@@ -145,10 +158,16 @@ class ProductController extends Controller
 
     public function delete(Product $product)
     {
-        $product = $product->findOrFail($product->id);
-        $product->delete();
-        return redirect()->route('product.index')
-        ->with('success', __('translations.products.flashes.success.destroy'));
+        try 
+        {
+            $product = $product->findOrFail($product->id);
+            $product->delete();
+            return response()->json(['status'=>'success'], 200);
+        }
+        catch(Exception $ex)
+        {
+            return response()->json(['status'=>'fail'], 404);
+        }
     }
 
     public function restore(int $id)

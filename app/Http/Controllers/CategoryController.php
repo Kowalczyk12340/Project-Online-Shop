@@ -47,29 +47,11 @@ class CategoryController extends Controller
                 ->addColumn('delete', function ($category) {
                     $button = '';
                     if (!$category->deleted_at) {
-                        // przycisk usuwania
-                        $button .= '<a class="btn btn-danger text-white">';
+                        $button .= '<a data-delete-href="';
+                            $button .=  route('category.delete', $category);
+                            $button .=   '"';
+                        $button .= 'class="btn btn-danger text-white"> ';
                         $button .= __('translations.categories.index.delete') . '</a>';
-                        $button .= '<form class="products" method="POST" action=' . route('category.destroy', $category) . '>';
-                        $button .= '<input type="submit" value='. __('translations.buttons.delete') . '/>';
-                        $button .= '<button type="button"
-                            class="btn btn-danger btn-sm destroy-button"
-                            data-toggle="tooltip"
-                            data-placement="top"';
-                        $button .= 'data-url="'
-                            . route('category.destroy', $category)
-                            . '"';
-                        $button .= 'data-title="'
-                            . __('translations.buttons.delete')
-                            . '"';
-                        $button .= 'data-message="'
-                            . __('translations.categories.destroy.messages.question')
-                            . ' ' . $category->name . '?'
-                            . '"';
-                        $button .= '">';
-                        $button .= '<span class="fas fa-power-off" aria-hidden="true"></span>
-                            </button>';
-                        $button .= '</form>';
                     }
                     else 
                     {
@@ -79,12 +61,11 @@ class CategoryController extends Controller
                         $button .= 'data-toggle="tooltip"
                                     data-placement="top"';
                         $button .= 'data-title="' . __('translations.buttons.restore') . '"';
-                        $button .= '><span class="fas fa-power-off" aria-hidden="true">
-                        </span></a>';
+                        $button .= '>Przywróć</a>';
                     }
                     return $button;
                 })
-                ->rawColumns(['edit', 'delete','image'])
+                ->rawColumns(['image', 'edit', 'delete'])
                 ->make(true);
         }
         return view('category.categories');
@@ -135,19 +116,16 @@ class CategoryController extends Controller
 
     public function delete(Category $category)
     {
-        $category = Category::findOrFail($category->id);
-        $category->delete();
-        return redirect()->route('category.index');
-    }
-
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        CategoryDeleted::dispatch($category);
-        return redirect()->route('category.index')
-            ->with('success', __('translations.categories.flashes.success.destroy', [
-                'name' => $category->name
-            ]));
+        try 
+        {
+            $category = $category->findOrFail($category->id);
+            $category->delete();
+            return response()->json(['status'=>'success'], 200);
+        }
+        catch(Exception $ex)
+        {
+            return response()->json(['status'=>'fail'], 404);
+        }
     }
 
     public function restore(int $id)

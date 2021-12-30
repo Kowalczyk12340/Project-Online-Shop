@@ -33,10 +33,10 @@
                                 <a class="btn btn-warning text-white" href="{{route('user.edit', ['user' => $user])}}">{{__('translations.users.index.edit')}}</a>
                             </td>
                             <td>
-                                <form method="post" action="{{route('user.delete', ['user' => $user])}}">
+                                <form id="formDelete{{$user->id}}" method="post" action="{{route('user.delete', ['user' => $user])}}">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger text-white" type="submit">{{__('translations.users.index.delete')}}</button>
+                                    <button type="button" onclick="deleteUser({{$user->id}});" class="btn btn-danger text-white">Usuń</button>
                                 </form>
                             </td>
                             @else
@@ -50,4 +50,14 @@
             </div>
     </div>
     </section>
+    <script>
+        function deleteUser(number) 
+        {
+            var text = `Czy na pewno chcesz usunąć użytkownika o numerze ${number}?`;
+            if(confirm(text))
+            {
+                document.getElementById(`formDelete${number}`).submit();
+            }
+        }
+    </script>
 @endsection
