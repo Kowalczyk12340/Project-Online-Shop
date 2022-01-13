@@ -46,7 +46,11 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "classmap": [
+            "tests",
+            "database/"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [
