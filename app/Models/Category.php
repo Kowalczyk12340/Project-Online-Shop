@@ -11,6 +11,10 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'id'
+    ];
+
     protected $cascadeDeletes = [
         'products'
     ];
