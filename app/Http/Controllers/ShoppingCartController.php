@@ -23,7 +23,7 @@ class ShoppingCartController extends Controller
     {
         if($request->ajax())
         {
-            $shoppingCarts = ShoppingCart::where('status_cart_id', 2)->get();
+            $shoppingCarts = ShoppingCart::where('status_cart_id', config('app.status.potwierdzone'))->get();
 
             return DataTablesDataTables::of($shoppingCarts)
                 ->editColumn('name', function($shoppingCart){
@@ -41,7 +41,7 @@ class ShoppingCartController extends Controller
                 ->addColumn('details', function ($shoppingCart) {
                     $button = '';
                     $button .= '<a class="btn btn-info text-white"  href="';
-                    $button .= route('shoppingCart.product_details', $shoppingCart);
+                    $button .= route('shoppingCart.show', $shoppingCart);
                     $button .= '">' . ('Szczegóły') . '</a>';
                     return $button;
                 })
@@ -77,7 +77,7 @@ class ShoppingCartController extends Controller
 
         if($request->ajax())
         {
-            $shoppingCarts = ShoppingCart::where('status_cart_id', 1)->get();
+            $shoppingCarts = ShoppingCart::where('status_cart_id', config('app.status.zrealizowane'))->get();
 
             
             return FacadesDataTables::of($shoppingCarts)
@@ -105,13 +105,17 @@ class ShoppingCartController extends Controller
 
     public function indexOrdersClient()
     {
-        $shoppingCarts = ShoppingCart::where('status_cart_id', 1)->where('user_id',Auth::user()->id)->get();
+        $shoppingCarts = ShoppingCart::where('user_id',Auth::user()->id)->where(
+            function($query) {
+                $query->where('status_cart_id', config('app.status.potwierdzone'))
+                      ->orWhere('status_cart_id', config('app.status.zrealizowane'));
+            })->get();
         return view('orderHome.orders', compact('shoppingCarts'));
     }
 
     public function indexClient()
     {
-        $shoppingCarts = ShoppingCart::where('status_cart_id', 2)->where('user_id',Auth::user()->id)->first();
+        $shoppingCarts = ShoppingCart::where('status_cart_id', config('app.status.niepotwierdzone'))->get()->where('user_id',Auth::user()->id)->first();
         return view('shoppingCartHome.shoppingCart', compact('shoppingCarts'));
     }
 
@@ -119,7 +123,10 @@ class ShoppingCartController extends Controller
     {
         $shoppingCartProd = ProductShoppingCart::where('shopping_cart_id', $shoppingCart->id)->get();
         if (count($shoppingCartProd) != 0) {
-            $shoppingCartProd = $shoppingCartProd[0];
+            foreach($shoppingCartProd as $prod)
+            {
+                $shoppingCartProd = $prod;
+            }
         }
         return view('shoppingCart.details', compact('shoppingCart', 'shoppingCartProd'));
     }
@@ -295,7 +302,7 @@ class ShoppingCartController extends Controller
     public function storeProductClient(Request $r)
     {
         $p = Product::findOrFail($r->product_id);
-        $shoppingCart = ShoppingCart::where('user_id', Auth::user()->id)->where('status_cart_id', 2)->first();
+        $shoppingCart = ShoppingCart::where('user_id', Auth::user()->id)->where('status_cart_id', 1)->first();
         if(count(ProductShoppingCart::where('shopping_cart_id',$shoppingCart->id)->where('product_id',$r->product_id)->get()) != 0)
         {
             $product = ProductShoppingCart::where('shopping_cart_id',$shoppingCart->id)->where('product_id',$r->product_id)->first();
@@ -343,7 +350,7 @@ class ShoppingCartController extends Controller
     public function editProductClient(Product $product, $q)
     {
         $edit = true;
-        $shoppingCart = ShoppingCart::where('user_id', Auth::user()->id)->where('status_cart_id', 2)->first();
+        $shoppingCart = ShoppingCart::where('user_id', Auth::user()->id)->where('status_cart_id', 1)->first();
         $shoppingCartProd = ProductShoppingCart::where([
             ['shopping_cart_id', $shoppingCart->id],
             ['product_id', $product->id],
@@ -400,12 +407,12 @@ class ShoppingCartController extends Controller
     public function pay(ShoppingCart $shoppingCart)
     {
         $shoppingCart = $shoppingCart->findOrFail($shoppingCart->id);
-        $shoppingCart->status_cart_id = 1; //opłacony
+        $shoppingCart->status_cart_id = 2; //potwierdzone
         $shoppingCart->save();
 
         $shoppingCart2 = new ShoppingCart();
         $shoppingCart2->user_id = Auth::user()->id;
-        $shoppingCart2->status_cart_id = 2; //nieopłacony
+        $shoppingCart2->status_cart_id = 1; //niepotwierdzone
         $shoppingCart2->save();
 
         return redirect()->route('shoppingCart.indexClient');

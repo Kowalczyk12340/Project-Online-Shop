@@ -232,5 +232,10 @@ return [
     ],
 
     'admin_role' => env('ADMIN_ROLE', 'admin'),
-    'user_role' => env('USER_ROLE', 'user')
+    'user_role' => env('USER_ROLE', 'user'),
+    'status' => [
+        'niepotwierdzone' => 1,
+        'potwierdzone' => 2,
+        'zrealizowane' => 3
+    ]
 ];

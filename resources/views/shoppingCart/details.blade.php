@@ -3,7 +3,7 @@
 <section class="container-fluid my-5 dashboard">
         <div class="row m-0 p-0">
             <div class="col-12">
-                <a class="btn back mb-5"  @if($shoppingCart->status_cart_id == 1) href={{route('shoppingCart.index_orders')}} @else href={{route('shoppingCart.index')}} @endif>{{__('translations.products.create.back')}}</a>
+                <a class="btn back mb-5"  @if($shoppingCart->status_cart_id == 3) href={{route('shoppingCart.index_orders')}} @elseif($shoppingCart->status_cart_id == 2) href={{route('shoppingCart.index')}} @endif>{{__('translations.products.create.back')}}</a>
                 <h2 class="font-weight-bold mb-3">{{'Produkty z koszyka'}}</h2>
                 <table class="table table-striped mt-5 text-center vertical-align-middle table-hover"> 
                     <thead class="bg-dark text-white ">
