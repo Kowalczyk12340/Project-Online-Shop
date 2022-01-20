@@ -71,7 +71,7 @@
                 @if(count($shoppingCarts->products) != 0)
                 <form class="col-12" action="{{route('pay', ['shoppingCart' => $shoppingCarts])}}" method="post">
                     @csrf
-                    <button class="btn bg-danger px-5 py-2 text-white mb-4 col-6 col-sm-4 justify-content-ceneter text-center offset-5 offset-lg-4" type="submit">Zapłać</button>
+                    <button class="btn bg-danger px-5 py-2 text-white mb-4 col-6 col-sm-4 justify-content-ceneter text-center offset-5 offset-lg-4" type="submit">Zatwierdź</button>
                 </form>
                 @endif
             </div>

@@ -15,8 +15,11 @@
                         <th>{{__('translations.products.index.productQuantity')}}</th>
                         <th>{{__('translations.products.index.productsSum')}}</th>
                         <th>{{__('translations.products.index.details')}}</th>
+                        @if($shoppingCart->status_cart_id == 2)
                         <th>{{__('translations.products.index.edit')}}</th>
                         <th>{{__('translations.products.index.delete')}}</th>
+                        @else 
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -42,8 +45,6 @@
                                 </form>
                             </td>
                             @else
-                            <td></td>
-                            <td></td>
                             @endif
                         </tr>
                     @endforeach
@@ -51,12 +52,21 @@
                         
                     <tfoot>
                         <tr>
-                            <td class="text-left font-weight-bold back" style="opacity:0.8;" colspan="5">
+                            <td class="text-left font-weight-bold back" style="opacity:0.8;" colspan="4">
                                 {{'Razem'}}
                             </td>
                             <td class="font-weight-bold back" colspan="4">
                                 {{number_format($shoppingCart->total_price, 2) .' zł'}}
                             </td>
+                            @if(($product->deleted_at == null && $shoppingCart->status_cart_id == 2) && count($shoppingCart->products) != 0)
+                            <td class="align-middle">
+                                <form class="col-12" action="{{route('shoppingCart.confirm', ['shoppingCart' => $shoppingCart])}}" method="post">
+                                    @csrf
+                                    <button class="btn btn-info" type="submit">Zatwierdź</button>
+                                </form>
+                            </td>
+                            @else
+                            @endif
                         </tr>
                     </tfoot>
                     @else

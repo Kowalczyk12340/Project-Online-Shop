@@ -65,6 +65,7 @@ Route::group(['middleware' => ['admin']], function(){
         Route::get('show/{shoppingCart}', [ShoppingCartController::class, 'show'])->name('show');
         Route::get('create', [ShoppingCartController::class, 'create'])->name('create');
         Route::post('store', [ShoppingCartController::class, 'store'])->name('store');
+        Route::post('confirm/{shoppingCart}',[ShoppingCartController::class, 'confirm'])->name('confirm');
         Route::get('edit/{shoppingCart}', [ShoppingCartController::class, 'edit'])->name('edit');
         Route::put('update/{shoppingCart}', [ShoppingCartController::class, 'update'])->name('update');
         Route::delete('delete/{shoppingCart}', [ShoppingCartController::class, 'delete'])->name('delete');

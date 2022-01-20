@@ -418,6 +418,20 @@ class ShoppingCartController extends Controller
         return redirect()->route('shoppingCart.indexClient');
     }
 
+    public function confirm(ShoppingCart $shoppingCart)
+    {
+        $shoppingCart = $shoppingCart->findOrFail($shoppingCart->id);
+        $shoppingCart->status_cart_id = 3; //zrealizowane
+        $shoppingCart->save();
+
+        $shoppingCart2 = new ShoppingCart();
+        $shoppingCart2->user_id = Auth::user()->id;
+        $shoppingCart2->status_cart_id = 2; //niepotwierdzone
+        $shoppingCart2->save();
+
+        return redirect()->route('shoppingCart.show',['shoppingCart' => $shoppingCart]);
+    }
+
     public function showClientCart(ShoppingCart $shoppingCart)
     {
         $shoppingCartProd = ProductShoppingCart::where('shopping_cart_id', $shoppingCart->id)->get();
